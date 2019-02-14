@@ -41,7 +41,7 @@ router.route('/search')
  * @returns {Error} - Unexpected error
  */
 /**
- * @route POST /api/events
+ * @route POST /api/news
  * @group events - Operations about events
  * @param {Event} event - Event to insert
  * @returns {Event} 200 - Event created

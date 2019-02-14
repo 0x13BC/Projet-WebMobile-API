@@ -1,16 +1,16 @@
 let mongoose = require('mongoose');
-let User = require('./users');
-let Comment = require('./comments');
+//let User = require('./users');
 
 let Schema = mongoose.Schema;
 
+//https://mongoosejs.com/docs/populate.html
 
 
 module.exports = mongoose.model('News', new Schema({
-    id: {
-        type: Number,
-        required: 'id obligatoire'
-    },
+    // id: {
+    //     type: Number,
+    //     required: 'id obligatoire'
+    // },
     
     title: {
         type: String,
@@ -22,11 +22,12 @@ module.exports = mongoose.model('News', new Schema({
     },
     createdAt: {
         type: Date,//yyyy-mm-dd
-        required: 'Date obligatoire'
+        default: Date.now()
     },
-    author: {
+    authorId: {
+        //type: mongoose.Schema.Types.ObjectId, ref: 'User',
         type: Number,
         required: 'Auteur obligatoire'
     },
-    Comments: Number //[Comment]
+    //Comments: [{type: mongoose.Schema.Types.ObjectId, ref: 'Comment'}]
 }));

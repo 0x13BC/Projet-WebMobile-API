@@ -1,19 +1,21 @@
 let mongoose = require('mongoose');
-let User = require('./users');
+
+//https://mongoosejs.com/docs/populate.html
 
 let Schema = mongoose.Schema;
 
 module.exports = mongoose.model('Comment', new Schema({
-    id: {
-        type: Number,
-        required: 'id obligatoire'
-    },
+    // id: {
+    //     type: Number,
+    //     required: 'id obligatoire'
+    // },
     createdAt: {
         type: Date, //yyyy-mm-dd
         default: Date.Now
     },
-    user: {
-        type: Number,
+    userId: {
+        //type: mongoose.Schema.Types.ObjectId, ref: 'User',
+        type: String,
         required: 'User obligatoire'
     },
     description: {

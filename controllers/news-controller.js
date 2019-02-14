@@ -19,18 +19,20 @@ exports.getNewsById = (req, resp) => {
 exports.searchNews = (req, resp) => {
     const params = req.query;
     let pred = {};
-    if (params.name)
-        pred.name = { $regex: params.name, $options: 'i' };;
-    if (params.sartdate)
-        pred.startDate = params.sartdate;
-    if (params.city)
-        pred.city = { $regex: params.city, $options: 'i' };
+    if (params.title)
+        pred.title = { $regex: params.title, $options: 'i' };;
+    if (params.createdAt)
+        pred.createdAt = params.createdAt;
+    if (params.description)
+        pred.description = { $regex: params.description, $options: 'i' };
 
     news.find(pred, (err, data) => resp.json(extractData(err, data)));
 }
 
 //POST /
 exports.createNews = (req, resp) => {
+    console.log("Route Post: /api/news");
+    console.log(req.body);
     let obj = new news(req.body);
     obj.save((err, data) => resp.json(extractData(err, data)));
 }

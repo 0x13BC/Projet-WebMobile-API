@@ -3,10 +3,10 @@ let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
 module.exports = mongoose.model('User', new Schema({
-    id: {
-        type: Number,
-        required: 'Nom obligatoire'
-    },
+    // id: {
+    //     type: Number,
+    //     required: 'Nom obligatoire'
+    // },
     name: {
         type: String,
         required: 'Prénom obligatoire'
