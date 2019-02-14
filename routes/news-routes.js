@@ -24,9 +24,9 @@ let auth = require('../utils/validate-token')
  * @route GET /api/news/search
  * @group news - Operations about news
  * @param {string} title.query - title of new
- * @param {string} description.query - city of new
- * @param {date} createdAt.query - start date of new
- * @returns {Array.<News>} 200 - An array of news
+ * @param {string} description.query - description of new
+ * @param {Date} createdAt.query - creation date of new
+ * @returns {Array.<New>} 200 - An array of news
  * @returns {Error} - Unexpected error
  */
 router.route('/search')
@@ -41,7 +41,7 @@ router.route('/search')
 /**
  * @route POST /api/news
  * @group news - Operations about news
- * @param {News} new - new to insert
+ * @param {New} new - new to insert
  * @returns {New} 200 - New created
  * @returns {Error} - Unexpected error
  */
@@ -53,22 +53,22 @@ router.route('/')
  * @route GET /api/news/:id
  * @group news - Operations about news
  * @param {string} id - id to find New
- * @returns {News} 200 - An New
+ * @returns {New} 200 - An New
  * @returns {Error} - Unexpected error
  */
 /**
 * @route PUT /api/news/:id
 * @group news - Operations about news
 * @param {string} id.query - id to update new
-* @param {News} new - New to update
-* @returns {News} 200 - New updated
+* @param {New} new - New to update
+* @returns {New} 200 - New updated
 * @returns {Error} - Unexpected error
 */
 /**
  * @route DELETE /api/news/:id
  * @group news - Operations about news
  * @param {string} id - id to remove New
- * @returns {News} 200 - New deleted
+ * @returns {New} 200 - New deleted
  * @returns {Error} - Unexpected error
  */
 router.route('/:id')

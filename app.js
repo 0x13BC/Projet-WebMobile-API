@@ -6,6 +6,7 @@ let logger = require('morgan');
 
 let mongoose = require('mongoose');
 let bodyParser = require('body-parser');
+let authController = require('./controllers/authentication-controller');
 
 //let usersRoutes = require('./routes/users-routes');
 //let eventsRoutes = require('./routes/events-routes');
@@ -16,6 +17,8 @@ let auth = require('./utils/validate-token');
 
 let app = express();
 app.use(cors());
+
+app.post('/authentication', authController);
 
 let indexRouter = require('./routes/index');
 let usersRouter = require('./routes/users');
@@ -55,7 +58,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.route('/').get((req, resp) => {
   resp.json('WEB API');
 });
-app.use('/users', usersRouter);
+app.use('/api/users', usersRouter);
 app.use('/api/news',newsRouter);
 
 // catch 404 and forward to error handler
