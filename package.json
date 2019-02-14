@@ -1,16 +1,39 @@
 {
   "name": "projet-webmobile-api",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",
+    "cors": "^2.8.5",
     "debug": "~2.6.9",
     "express": "~4.16.0",
+    "express-swagger-generator": "^1.1.11",
     "http-errors": "~1.6.2",
+    "jsonwebtoken": "^8.4.0",
+    "mongoose": "^5.4.12",
     "morgan": "~1.9.0",
     "pug": "2.0.0-beta11"
-  }
+  },
+  "description": "Projet Web Mobile: API NodeJS",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boocry-banana/Projet-WebMobile-API.git"
+  },
+  "keywords": [
+    "Webmobile",
+    "API",
+    "Projet",
+    "REST",
+    "NodeJS"
+  ],
+  "author": "Paul Pascal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/boocry-banana/Projet-WebMobile-API/issues"
+  },
+  "homepage": "https://github.com/boocry-banana/Projet-WebMobile-API#readme"
 }
