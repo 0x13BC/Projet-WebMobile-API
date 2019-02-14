@@ -6,11 +6,7 @@ exports.getAllNews = (req, resp) => {
     news.find({}, (err, data) => {
         resp.json(extractData(err, data));
     });
-    // news.find({}).sort({ createdAt: -1 }).execFind(function (err, docs) {
-    //     resp.json(extractData(err, data));
-    // });
 }
-
 
 // GET /:id
 exports.getNewsById = (req, resp) => {
@@ -19,8 +15,6 @@ exports.getNewsById = (req, resp) => {
         resp.json(extractData(err, data));
     });
 }
-
-
 
 // GET /search?....
 exports.searchNews = (req, resp) => {
@@ -38,35 +32,25 @@ exports.searchNews = (req, resp) => {
 
 //POST /
 exports.createNews = (req, resp) => {
-    console.log("Route Post: /api/news");
+    console.log("Route Post: /api/news/:id");
     console.log(req.body);
     let obj = new news(req.body);
     obj.save((err, data) => resp.json(extractData(err, data)));
 }
 
-// PUT /:id
-exports.updateNews = (req, resp) => {
-    news.findByIdAndUpdate(req.params.id, req.body, { new: false }, (err, data) => resp.json(extractData(err, data)));
-}
+// // PUT /:id
+// exports.updateNews = (req, resp) => {
+//     news.findByIdAndUpdate(req.params.id, req.body, { new: false }, (err, data) => resp.json(extractData(err, data)));
+// }
 
-//POST /:id
-exports.createComment = (req, resp) => {
-    console.log("Route Post: /api/news/:id");
-    console.log(req.body);
-    console.log(req.params);
-    let obj = new comment(req.body);
-    console.log(obj);
-    obj.save((err, data) => resp.json(extractData(err, data)));
-}
-
-//DELETE /:id
-exports.deleteNews = (req, resp) => {
-    news.remove({ _id: req.params.id }, (err, data) => {
-        if (err)
-            resp.json(err);
-        resp.json({ 'message': 'Event successfully deleted' });
-    })
-}
+// //DELETE /:id
+// exports.deleteNews = (req, resp) => {
+//     news.remove({ _id: req.params.id }, (err, data) => {
+//         if (err)
+//             resp.json(err);
+//         resp.json({ 'message': 'Event successfully deleted' });
+//     })
+// }
 
 function extractData(err, data) {
     if (err)

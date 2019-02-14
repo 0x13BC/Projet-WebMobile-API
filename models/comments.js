@@ -15,8 +15,13 @@ module.exports = mongoose.model('Comment', new Schema({
     },
     userId: {
         //type: mongoose.Schema.Types.ObjectId, ref: 'User',
-        type: String,
+        type: Number,
         required: 'User obligatoire'
+    },
+    newsId: {
+        //type: mongoose.Schema.Types.ObjectId, ref: 'Number',
+        type: Number,
+        //required: 'News obligatoire'
     },
     description: {
         type: String,

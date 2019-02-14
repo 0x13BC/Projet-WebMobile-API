@@ -21,6 +21,19 @@ let indexRouter = require('./routes/index');
 let usersRouter = require('./routes/users');
 let newsRouter = require('./routes/news-routes');
 
+//SWAGGER
+//let swag = require('swagger-ui-express');
+//let swagDoc = require('./swagger.yaml');
+
+let swag = require('express-swagger-generator')(app);
+let options = require('./swagger');
+swag(options);
+//app.use('/api-docs', swag.serve, swag.setup(swagDoc));
+
+/*app.use((req, resp, next) => {
+    console.log("test");
+    next();
+});*/
 
 const confMongo = require('./configurations/config-mongo');
 // mongoose.Promise = global.Promise; V4

@@ -12,39 +12,37 @@ let auth = require('../utils/validate-token')
 
 
 /**
- * @typedef Event
- * @property {string} name.required
- * @property {date} startDate.required
- * @property {date} endDate.required
- * @property {string} street
- * @property {string} zipcode
- * @property {string} city.required
+ * @typedef New
+ * @property {string} title.required
+ * @property {String} description.required
+ * @property {date} createdAt
+ * @property {Number} authorId
  */
 
 /**
- * Search events
- * @route GET /api/events/search
- * @group events - Operations about events
- * @param {string} name.query - name of event
- * @param {string} city.query - city of event
- * @param {date} startDate.query - start date of event
- * @returns {Array.<Event>} 200 - An array of events
+ * Search news
+ * @route GET /api/news/search
+ * @group news - Operations about news
+ * @param {string} title.query - title of new
+ * @param {string} description.query - city of new
+ * @param {date} createdAt.query - start date of new
+ * @returns {Array.<News>} 200 - An array of news
  * @returns {Error} - Unexpected error
  */
 router.route('/search')
     .get(controller.searchNews)
 
 /**
- * @route GET /api/events
- * @group events - Operations about events
- * @returns {Array.<Event>} 200 - An array of events
+ * @route GET /api/news
+ * @group news - Operations about news
+ * @returns {Array.<News>} 200 - An array of news
  * @returns {Error} - Unexpected error
  */
 /**
  * @route POST /api/news
- * @group events - Operations about events
- * @param {Event} event - Event to insert
- * @returns {Event} 200 - Event created
+ * @group news - Operations about news
+ * @param {News} new - new to insert
+ * @returns {New} 200 - New created
  * @returns {Error} - Unexpected error
  */
 router.route('/')
@@ -52,30 +50,31 @@ router.route('/')
     .post(controller.createNews);
 
 /**
- * @route GET /api/events/:id
- * @group events - Operations about events
- * @param {string} id - id to find event
- * @returns {Event} 200 - An event
+ * @route GET /api/news/:id
+ * @group news - Operations about news
+ * @param {string} id - id to find New
+ * @returns {News} 200 - An New
  * @returns {Error} - Unexpected error
  */
 /**
-* @route PUT /api/events/:id
-* @group events - Operations about events
-* @param {string} id.query - id to update event
-* @param {Event} event - Event to update
-* @returns {Event} 200 - Event updated
+* @route PUT /api/news/:id
+* @group news - Operations about news
+* @param {string} id.query - id to update new
+* @param {News} new - New to update
+* @returns {News} 200 - New updated
 * @returns {Error} - Unexpected error
 */
 /**
- * @route DELETE /api/events/:id
- * @group events - Operations about events
- * @param {string} id - id to remove event
- * @returns {Event} 200 - Event deleted
+ * @route DELETE /api/news/:id
+ * @group news - Operations about news
+ * @param {string} id - id to remove New
+ * @returns {News} 200 - New deleted
  * @returns {Error} - Unexpected error
  */
 router.route('/:id')
     .get(controller.getNewsById)
     .put(controller.updateNews)
+    .post(controller.createComment)
     .delete(auth.admin, controller.deleteNews);
 
 

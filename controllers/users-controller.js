@@ -20,7 +20,7 @@ exports.getUserById = (req, resp) => {
 //POST /
 exports.createUser = (req, resp) => {
     let obj = new users(req.body);
-    let regexp = /^.*(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^\da-zA-Z]){6,}.*$/; // Contient chiffre minuscule majuscule pas de caractère spéciaux et minimun 6 caractères
+    let regexp = /^.*(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^\da-zA-Z]){6,}.*$/; // Contient chiffre minuscule majuscule avec de caractère spéciaux et minimun 6 caractères
     const login = obj.login;
     console.log(req.body);
     console.log(obj.password);
