@@ -25,8 +25,8 @@ module.exports = mongoose.model('News', new Schema({
         required: 'Date obligatoire'
     },
     author: {
-        type: User,
+        type: Number,
         required: 'Auteur obligatoire'
     },
-    Comments: [Comment]
+    Comments: Number //[Comment]
 }));

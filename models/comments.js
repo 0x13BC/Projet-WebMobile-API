@@ -1,4 +1,5 @@
 let mongoose = require('mongoose');
+let User = require('./users');
 
 let Schema = mongoose.Schema;
 
@@ -12,7 +13,7 @@ module.exports = mongoose.model('Comment', new Schema({
         default: Date.Now
     },
     user: {
-        type: User,
+        type: Number,
         required: 'User obligatoire'
     },
     description: {

@@ -1,8 +1,8 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+let createError = require('http-errors');
+let express = require('express');
+let path = require('path');
+let cookieParser = require('cookie-parser');
+let logger = require('morgan');
 
 let mongoose = require('mongoose');
 let bodyParser = require('body-parser');
@@ -17,15 +17,15 @@ let auth = require('./utils/validate-token');
 let app = express();
 app.use(cors());
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+let indexRouter = require('./routes/index');
+let usersRouter = require('./routes/users');
+let newsRouter = require('./routes/news-routes');
 
 
 const confMongo = require('./configurations/config-mongo');
 // mongoose.Promise = global.Promise; V4
 mongoose.connect(confMongo.database, { useNewUrlParser: true });
 
-var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -38,8 +38,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-app.use('/', indexRouter);
+//app.use('/', indexRouter);
+app.route('/').get((req, resp) => {
+  resp.json('WEB API');
+});
 app.use('/users', usersRouter);
+app.use('/api/news',newsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -56,6 +60,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
 //app.listen(PORT, () => console.log(`Listening on ${PORT}`));
 
 module.exports = app;
